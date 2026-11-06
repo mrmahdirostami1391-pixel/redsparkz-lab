@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
@@ -6,12 +7,21 @@
 <title>REDSPARKZ • Security Lab</title>
 <style>
 :root{color-scheme:dark;--bg:#090d18;--panel:#121a2b;--line:#263653;--cyan:#57e6ff;--gold:#ffc857;--muted:#a8b5ca}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 10%,#183451 0,transparent 35%),linear-gradient(145deg,#080c16,#101a2b);font-family:system-ui,Tahoma,sans-serif;color:#f3f7ff;display:grid;place-items:center;padding:22px}
-.wrap{width:min(440px,100%)}.top{text-align:center;margin-bottom:18px}.logo{font-weight:900;letter-spacing:3px;color:var(--cyan);font-size:25px;text-shadow:0 0 18px #2acfff66}.sub{color:var(--muted);font-size:12px;letter-spacing:2px;margin-top:4px}
-.card{background:#111a2bed;border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:0 22px 70px #0008}.tag{display:inline-block;color:#09121d;background:var(--gold);font-size:11px;font-weight:900;padding:5px 9px;border-radius:6px}
-h1{font-size:23px;margin:15px 0 6px}.desc{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 20px}
-label{display:block;font-size:13px;margin:14px 0 7px;color:#dbe7fa}input{width:100%;border:1px solid #304361;border-radius:10px;background:#0a1220;color:white;padding:13px;font:inherit;outline:none}input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #57e6ff22}
-button{width:100%;margin-top:18px;border:0;border-radius:10px;padding:13px;background:linear-gradient(90deg,#39c9ed,#7cf0df);color:#06121c;font-weight:900;font-size:15px}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 10%,#183451 0,transparent 35%),linear-gradient(145deg,#080c16,#101a2b);font-family:system-ui,Tahoma,sans-serif;color:#f3f7ff;display:grid;place-items:center;padding:22px}
+.wrap{width:min(440px,100%)}
+.top{text-align:center;margin-bottom:18px}
+.logo{font-weight:900;letter-spacing:3px;color:var(--cyan);font-size:25px;text-shadow:0 0 18px #2acfff66}
+.sub{color:var(--muted);font-size:12px;letter-spacing:2px;margin-top:4px}
+.card{background:#111a2bed;border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:0 22px 70px #0008}
+.tag{display:inline-block;color:#09121d;background:var(--gold);font-size:11px;font-weight:900;padding:5px 9px;border-radius:6px}
+h1{font-size:23px;margin:15px 0 6px}
+.desc{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 20px}
+label{display:block;font-size:13px;margin:14px 0 7px;color:#dbe7fa}
+input{width:100%;border:1px solid #304361;border-radius:10px;background:#0a1220;color:white;padding:13px;font:inherit;outline:none}
+input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #57e6ff22}
+button,.report-link{display:block;width:100%;margin-top:18px;border:0;border-radius:10px;padding:13px;background:linear-gradient(90deg,#39c9ed,#7cf0df);color:#06121c;font-weight:900;font-size:15px;text-align:center;text-decoration:none;cursor:pointer}
+.report-link{background:linear-gradient(90deg,#ffc857,#ffe39b)}
 .note{margin-top:17px;border:1px solid #35516c;background:#0b1423;border-radius:11px;padding:12px;color:#b8c9dd;font-size:11px;line-height:1.8}
 #result{display:none;margin-top:15px;background:#0b1c20;border:1px solid #2b776d;padding:13px;border-radius:10px;font-size:13px;line-height:1.9}
 .footer{text-align:center;color:#74849b;font-size:11px;margin-top:14px}
@@ -19,32 +29,63 @@ button{width:100%;margin-top:18px;border:0;border-radius:10px;padding:13px;backg
 </head>
 <body>
 <main class="wrap">
-  <header class="top"><div class="logo">REDSPARKZ</div><div class="sub">CYBER SECURITY TRAINING LAB</div></header>
-  <section class="card">
-    <span class="tag">SIMULATION • SAFE DEMO</span>
-    <h1>ورود آزمایشی به پایگاه بازی</h1>
-    <p class="desc">این صفحه فقط برای آموزش تشخیص صفحات جعلی ساخته شده است. هیچ حساب واقعی در کار نیست.</p>
-    <form id="demo">
-      <label for="alias">نام مستعار آزمایشی</label>
-      <input id="alias" maxlength="24" autocomplete="off" placeholder="مثلاً Player-01" required>
-      <label for="code">کد ساختگی آزمایش</label>
-      <input id="code" maxlength="12" autocomplete="off" placeholder="مثلاً DEMO-123" required>
-      <button type="submit">اجرای آزمایش</button>
-    </form>
-    <div id="result" role="status"></div>
-    <div class="note"><b>هشدار آموزشی:</b> این یک شبیه‌ساز است، نه صفحه ورود واقعی. رمز عبور، ایمیل، شماره تلفن یا اطلاعات حساب وارد نکنید. داده‌ها فقط در همین مرورگر نمایش داده می‌شوند و به هیچ سروری ارسال نمی‌شوند.</div>
-  </section>
-  <div class="footer">REDSPARKZ LAB • LOCAL-ONLY DEMO • NO CREDENTIALS</div>
+<header class="top">
+<div class="logo">REDSPARKZ</div>
+<div class="sub">CYBER SECURITY TRAINING LAB</div>
+</header>
+
+<section class="card">
+<span class="tag">SIMULATION • SAFE DEMO</span>
+<h1>ورود آزمایشی به پایگاه بازی</h1>
+<p class="desc">این صفحه فقط برای آموزش تشخیص صفحات جعلی ساخته شده است. هیچ حساب واقعی در کار نیست.</p>
+
+<form id="demo">
+<label for="alias">نام مستعار آزمایشی</label>
+<input id="alias" maxlength="24" autocomplete="off" placeholder="مثلاً Player-01" required>
+
+<label for="code">کد ساختگی آزمایش</label>
+<input id="code" maxlength="12" autocomplete="off" placeholder="مثلاً DEMO-123" required>
+
+<button type="submit">اجرای آزمایش</button>
+</form>
+
+<div id="result" role="status"></div>
+
+<div class="note">
+<b>هشدار آموزشی:</b>
+این یک شبیه‌ساز است، نه صفحه ورود واقعی.
+رمز عبور، ایمیل، شماره تلفن یا اطلاعات حساب وارد نکنید.
+داده‌های آزمایش فقط در همین مرورگر پردازش می‌شوند.
+</div>
+
+<div class="note">
+<b>گزارش اختیاری:</b>
+اگر مایل هستید نتیجه آزمایش را گزارش کنید، با رضایت خودتان فرم زیر را تکمیل کنید. ارسال گزارش اختیاری است.
+</div>
+
+<a class="report-link"
+href="https://docs.google.com/forms/d/e/1FAIpQLScVFe9PEA_PHT_Qm_gcqxGQq1sVGDO6Q0r-a94aU4GxR01Obg/viewform"
+target="_blank"
+rel="noopener noreferrer">
+ارسال گزارش با رضایت
+</a>
+</section>
+
+<div class="footer">REDSPARKZ LAB • LOCAL-ONLY DEMO • NO CREDENTIALS</div>
 </main>
+
 <script>
 document.getElementById('demo').addEventListener('submit',function(e){
  e.preventDefault();
+
  const alias=document.getElementById('alias').value.trim();
  const code=document.getElementById('code').value.trim();
  const out=document.getElementById('result');
+
  out.style.display='block';
  out.textContent='آزمایش با موفقیت اجرا شد — نام مستعار: '+alias+' | کد آزمایش: '+code+' . این داده فقط در همین صفحه پردازش شد و جایی ارسال نشد.';
 });
 </script>
 </body>
 </html>
+
